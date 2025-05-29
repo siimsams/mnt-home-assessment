@@ -1,3 +1,8 @@
+## How to run?
+In the root of this project run
+
+- docker compose up -d
+
 ## Overall goal
 
 Build a small order-management app composed of a frontend and a backend, demonstrating production-ready code, traceability, and ease of setup.
