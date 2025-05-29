@@ -7,6 +7,7 @@ export class OrdersTable1748523390522 implements MigrationInterface {
         await queryRunner.query(`
             CREATE TABLE orders (
                 id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+                public_id VARCHAR(255) NOT NULL,
                 order_number VARCHAR(255) NOT NULL,
                 payment_description VARCHAR(255) NOT NULL,
                 street_address VARCHAR(255) NOT NULL,
@@ -16,6 +17,14 @@ export class OrdersTable1748523390522 implements MigrationInterface {
                 currency VARCHAR(3) NOT NULL,
                 payment_due_date TIMESTAMP WITH TIME ZONE NOT NULL
             )
+        `);
+
+        await queryRunner.query(`
+            CREATE UNIQUE INDEX idx_orders_public_id ON orders (public_id);
+        `);
+
+        await queryRunner.query(`
+            CREATE UNIQUE INDEX idx_orders_order_number ON orders (order_number);
         `);
     }
 

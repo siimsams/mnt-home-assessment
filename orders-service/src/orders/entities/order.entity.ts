@@ -1,9 +1,14 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({
+  name: 'orders',
+})
 export class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column({ unique: true })
+  publicId: string;
 
   @Column({ unique: true })
   orderNumber: string;

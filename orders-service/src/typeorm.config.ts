@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const dataSource = new DataSource({
   migrations: [__dirname + '/migrations/*{.ts,.js}'],
   logging: true,
   synchronize: false,
+  namingStrategy: new SnakeNamingStrategy(),
 });
 
 export const runMigrations = async () => {
