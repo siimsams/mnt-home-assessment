@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
-  order-service:
+  orders-service:
     build:
-      context: ./order-service
+      context: ./orders-service
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
@@ -18,7 +16,7 @@ services:
         condition: service_healthy
 
   postgres:
-    image: postgres:16-alpine
+    image: postgres:17-bookworm
     ports:
       - "5432:5432"
     environment:
