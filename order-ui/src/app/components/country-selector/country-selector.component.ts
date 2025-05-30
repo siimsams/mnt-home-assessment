@@ -26,16 +26,24 @@ export class CountrySelectorComponent {
   @Output() selectionChange = new EventEmitter<string[]>();
 
   filteredCountries: Country[] = [];
+  searchText: string = '';
 
   ngOnInit() {
     this.filteredCountries = [...this.countries];
   }
 
   filterCountries(event: Event): void {
-    const searchText = (event.target as HTMLInputElement).value.toLowerCase();
-    this.filteredCountries = this.countries.filter(country =>
-      country.name.toLowerCase().includes(searchText)
-    );
+    this.searchText = (event.target as HTMLInputElement).value.toLowerCase();
+  }
+
+  shouldShowCountry(country: Country): boolean {
+    return this.searchText === '' || 
+           country.name.toLowerCase().includes(this.searchText);
+  }
+
+  isSelectedButNotMatching(country: Country): boolean {
+    return this.selectedCountries.includes(country.code) && 
+           !country.name.toLowerCase().includes(this.searchText);
   }
 
   onSelectionChange(selected: string[]): void {

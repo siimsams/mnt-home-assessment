@@ -23,3 +23,16 @@ app-country-selector {
   display: block;
   width: 100%;
 }
+
+.selected-not-matching {
+  opacity: 0.5;
+  font-style: italic;
+  
+  &.mat-mdc-option-selected {
+    opacity: 0.7;
+  }
+}
+
+.hidden {
+  display: none !important;
+}

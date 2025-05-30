@@ -1,12 +1,13 @@
 <mat-form-field>
   <mat-label>Country</mat-label>
-  <mat-select multiple [(ngModel)]="selectedCountries" (selectionChange)="onSelectionChange($event.value)">
+  <mat-select multiple [ngModel]="selectedCountries" (selectionChange)="onSelectionChange($event.value)">
     <div class="select-search-container">
       <mat-form-field class="select-search-field">
         <input matInput (keyup)="filterCountries($event)" placeholder="Search countries...">
       </mat-form-field>
     </div>
-    <mat-option *ngFor="let country of countries" [value]="country.code">
+    <mat-option *ngFor="let country of filteredCountries" [value]="country.code"
+                [class.hidden]="!shouldShowCountry(country)">
       {{country.name}}
     </mat-option>
   </mat-select>
