@@ -15,7 +15,9 @@ export class OrdersTable1748523390522 implements MigrationInterface {
                 country VARCHAR(255) NOT NULL,
                 amount DECIMAL(10, 2) NOT NULL,
                 currency VARCHAR(3) NOT NULL,
-                payment_due_date TIMESTAMP WITH TIME ZONE NOT NULL
+                payment_due_date TIMESTAMP WITH TIME ZONE NOT NULL,
+                created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
             )
         `);
 
