@@ -14,4 +14,9 @@
       (searchTextChange)="onDescriptionFilterChange($event)">
     </app-search>
   </div>
+
+  <button id="clear-all-btn" mat-button extended (click)="clearAllFilters()">
+    <mat-icon>clear_all</mat-icon>
+    Clear All
+  </button>
 </div>
