@@ -41,7 +41,7 @@ export class OrdersService {
     
         const totalPages = Math.ceil(totalCount / currentLimit);
     
-        return { data: orders, totalPages, page: currentPage, limit: currentLimit };
+        return { data: orders, totalPages, page: currentPage, limit: currentLimit, totalItems: totalCount };
     }
 
     async orderNumberExists(orderNumber: string): Promise<boolean> {

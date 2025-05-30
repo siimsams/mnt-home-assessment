@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>Search Description</mat-label>
+  <input 
+    matInput 
+    [(ngModel)]="searchText" 
+    (ngModelChange)="onSearchChange($event)" 
+    placeholder="Type to search...">
+</mat-form-field> 

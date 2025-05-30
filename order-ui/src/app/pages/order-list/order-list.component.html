@@ -1,23 +1,15 @@
-<table mat-table [dataSource]="orders" class="mat-elevation-z8">
+<app-order-filters
+  [countries]="COUNTRIES"
+  [(selectedCountries)]="countryFilter"
+  [(descriptionFilter)]="descriptionFilter"
+  (selectedCountriesChange)="onCountryChange($event)"
+  (descriptionFilterChange)="onDescriptionFilterChange($event)">
+</app-order-filters>
 
-  <ng-container matColumnDef="orderNumber">
-    <th mat-header-cell *matHeaderCellDef> Order # </th>
-    <td mat-cell *matCellDef="let order"> {{ order.orderNumber }} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="paymentDescription">
-    <th mat-header-cell *matHeaderCellDef> Description </th>
-    <td mat-cell *matCellDef="let order"> {{ order.paymentDescription }} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<mat-paginator
-  [length]="total"
-  [pageSize]="limit"
-  [pageSizeOptions]="[25, 50, 100]"
-  (page)="onPageChange($event)">
-</mat-paginator>
+<app-order-table
+  [orders]="orders"
+  [total]="pagination.total"
+  [limit]="pagination.limit"
+  (pageChange)="onPageChange($event)">
+</app-order-table>
   

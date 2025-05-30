@@ -1,9 +1,14 @@
 import { Type } from 'class-transformer';
 import { IsNumber, IsOptional, IsString, Min } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class GetOrdersFilterDto {
   @IsOptional()
   @IsString({ each: true })
+  @Transform(({ value }) => {
+    if (!value) return undefined;
+    return Array.isArray(value) ? value : [value];
+  })
   countryCodes?: string[];
 
   @IsOptional()

@@ -1,4 +1,4 @@
-import { IsISO8601, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsISO8601, IsNotEmpty, IsNumber, IsString, Length } from "class-validator";
 
 export class CreateOrderDto {
     @IsNotEmpty()
@@ -19,6 +19,7 @@ export class CreateOrderDto {
 
     @IsNotEmpty()
     @IsString()
+    @Length(3, 3)
     country: string;
 
     @IsNotEmpty()

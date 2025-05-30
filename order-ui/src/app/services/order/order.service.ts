@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Order } from '../models/order.model';
-import { environment } from '../../environments/environment';
+import { Order } from '../../models/order.model';
+import { environment } from '../../../environments/environment';
 
 interface OrderResponse {
   data: Order[];
   totalPages: number;
+  totalItems: number;
   page: number;
   limit: number;
 }

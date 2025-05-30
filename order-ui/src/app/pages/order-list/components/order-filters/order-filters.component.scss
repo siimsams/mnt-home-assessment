@@ -1,0 +1,16 @@
+.filters-container {
+  display: flex;
+  gap: 1rem;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.country-selector {
+  width: 400px;
+  flex-shrink: 0;
+}
+
+.description-search {
+  flex-grow: 1;
+}

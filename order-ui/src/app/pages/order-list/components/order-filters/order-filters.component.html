@@ -1,0 +1,17 @@
+<div class="filters-container">
+  <div class="country-selector">
+    <app-country-selector
+      [countries]="countries"
+      [(selectedCountries)]="selectedCountries"
+      (selectionChange)="onCountryChange($event)">
+    </app-country-selector>
+  </div>
+
+  <div class="description-search">
+    <app-search
+      [(searchText)]="descriptionFilter"
+      [debounceTime]="300"
+      (searchTextChange)="onDescriptionFilterChange($event)">
+    </app-search>
+  </div>
+</div>
