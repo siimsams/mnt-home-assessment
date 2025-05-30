@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { Country } from '../../types/country';
 
 @Component({
@@ -14,7 +16,9 @@ import { Country } from '../../types/country';
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './country-selector.component.html',
   styleUrls: ['./country-selector.component.scss']
@@ -49,5 +53,11 @@ export class CountrySelectorComponent {
   onSelectionChange(selected: string[]): void {
     this.selectedCountriesChange.emit(selected);
     this.selectionChange.emit(selected);
+  }
+
+  clearSelections(): void {
+    this.selectedCountries = [];
+    this.selectedCountriesChange.emit([]);
+    this.selectionChange.emit([]);
   }
 } 

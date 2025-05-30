@@ -4,6 +4,9 @@
     <div class="select-search-container">
       <mat-form-field class="select-search-field">
         <input matInput (keyup)="filterCountries($event)" placeholder="Search countries...">
+        <button matSuffix mat-icon-button (click)="clearSelections()" *ngIf="selectedCountries.length > 0">
+          <mat-icon>clear_all</mat-icon>
+        </button>
       </mat-form-field>
     </div>
     <mat-option *ngFor="let country of filteredCountries" [value]="country.code"
