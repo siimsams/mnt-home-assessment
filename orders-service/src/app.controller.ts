@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Public } from './shared/auth/constants';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
+  @Public()
   @Get()
   getHealth(): string {
-    return this.appService.getHealth();
+    return 'Healthy';
   }
 }

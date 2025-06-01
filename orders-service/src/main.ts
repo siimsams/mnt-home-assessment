@@ -10,9 +10,10 @@ async function runApplication() {
   const app = await NestFactory.create(AppModule);
   
   app.enableCors({
-    origin: process.env.CORS_ORIGIN ?? 'http://localhost:4200',
+    origin: process.env.CORS_ORIGIN?.split(','),
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Accept'],
+    allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
+    credentials: true,
   });
 
   app.useGlobalPipes(new ValidationPipe(
