@@ -16,7 +16,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     ReactiveFormsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useExisting: JwtInterceptor, multi: true }
   ],
   exports: [
     CreateOrderFormComponent
