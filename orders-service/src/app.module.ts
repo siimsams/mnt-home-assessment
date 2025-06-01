@@ -3,10 +3,10 @@ import { AppController } from './app.controller';
 import { OrdersModule } from './orders/orders.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import dataSource from './typeorm.config';
-import { AuthGuard } from './shared/auth/auth-guard';
+import { AuthGuard } from './auth/auth-guard';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from './shared/auth/constants';
+import { jwtConstants } from './auth/constants';
 
 @Module({
   imports: [

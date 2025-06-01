@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { Public } from './shared/auth/constants';
+import { Public } from './auth/constants';
 
 @Controller()
 export class AppController {

@@ -1,8 +1,11 @@
+import './logging/tracing';
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { runMigrations } from './typeorm.config';
 import { ValidationPipe } from '@nestjs/common';
 import * as dotenv from 'dotenv';
+import { LoggingInterceptor } from './logging/logging.interceptor';
 
 dotenv.config();
 
@@ -15,6 +18,8 @@ async function runApplication() {
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
     credentials: true,
   });
+
+  app.useGlobalInterceptors(new LoggingInterceptor());
 
   app.useGlobalPipes(new ValidationPipe(
     {

@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   orders-service:
     build:
@@ -13,7 +15,10 @@ services:
       - DB_NAME=orderdb
       - CORS_ORIGIN=http://localhost:4200,http://localhost:3000
       - JWT_SECRET=topsecret
+      - TRACE_EXPORTER_URL=http://jaeger:4318/v1/traces
     depends_on:
+      jaeger:
+        condition: service_started
       postgres:
         condition: service_healthy
 
@@ -32,6 +37,14 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.57
+    ports:
+      - "16686:16686"
+      - "4318:4318"
+      - "5778:5778"
+      - "9411:9411"
 
 volumes:
   postgres_data:
