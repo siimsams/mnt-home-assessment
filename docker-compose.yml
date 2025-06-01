@@ -11,6 +11,7 @@ services:
       - DB_USER=postgres
       - DB_PASS=postgres
       - DB_NAME=orderdb
+      - CORS_ORIGIN=http://localhost:4200
     depends_on:
       postgres:
         condition: service_healthy
