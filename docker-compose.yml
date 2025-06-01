@@ -20,6 +20,16 @@ services:
       postgres:
         condition: service_healthy
 
+  orders-ui:
+    build:
+      context: ./orders-ui
+      dockerfile: Dockerfile
+    ports:
+      - "3001:80"
+    depends_on:
+      orders-service:
+        condition: service_started
+
   postgres:
     image: postgres:17-bookworm
     ports:
