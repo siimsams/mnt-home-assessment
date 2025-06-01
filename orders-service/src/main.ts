@@ -11,7 +11,7 @@ dotenv.config();
 
 async function runApplication() {
   const app = await NestFactory.create(AppModule);
-  
+
   app.enableCors({
     origin: process.env.CORS_ORIGIN?.split(','),
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -21,19 +21,22 @@ async function runApplication() {
 
   app.useGlobalInterceptors(new LoggingInterceptor());
 
-  app.useGlobalPipes(new ValidationPipe(
-    {
+  app.useGlobalPipes(
+    new ValidationPipe({
       whitelist: true,
       transform: true,
-    }
-  ));
+    }),
+  );
   await app.listen(process.env.PORT ?? 3000);
 }
 
 async function bootstrap() {
   await runMigrations();
-  
+
   await runApplication();
 }
 
-bootstrap();
+bootstrap().catch((error) => {
+  console.error('Failed to start application:', error);
+  process.exit(1);
+});

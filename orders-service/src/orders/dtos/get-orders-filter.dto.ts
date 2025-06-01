@@ -5,10 +5,16 @@ import { Transform } from 'class-transformer';
 export class GetOrdersFilterDto {
   @IsOptional()
   @IsString({ each: true })
-  @Transform(({ value }) => {
-    if (!value) return undefined;
-    return Array.isArray(value) ? value : [value];
-  })
+  @Transform(
+    ({
+      value,
+    }: {
+      value: string | string[] | undefined;
+    }): string[] | undefined => {
+      if (!value) return undefined;
+      return Array.isArray(value) ? value : [value];
+    },
+  )
   countryCodes?: string[];
 
   @IsOptional()

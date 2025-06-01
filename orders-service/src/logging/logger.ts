@@ -1,4 +1,4 @@
-import {trace, context } from '@opentelemetry/api';
+import { trace, context } from '@opentelemetry/api';
 import pino from 'pino';
 
 const baseLogger = pino({

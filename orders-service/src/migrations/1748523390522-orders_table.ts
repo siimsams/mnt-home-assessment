@@ -1,10 +1,10 @@
-import { MigrationInterface, QueryRunner } from "typeorm";
+import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class OrdersTable1748523390522 implements MigrationInterface {
-    name = 'CreateOrdersTable1748523390522'
+  name = 'CreateOrdersTable1748523390522';
 
-    public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`
+  public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(`
             CREATE TABLE orders (
                 id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
                 public_id VARCHAR(255) NOT NULL,
@@ -21,16 +21,16 @@ export class OrdersTable1748523390522 implements MigrationInterface {
             )
         `);
 
-        await queryRunner.query(`
+    await queryRunner.query(`
             CREATE UNIQUE INDEX idx_orders_public_id ON orders (public_id);
         `);
 
-        await queryRunner.query(`
+    await queryRunner.query(`
             CREATE UNIQUE INDEX idx_orders_order_number ON orders (order_number);
         `);
-    }
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`DROP TABLE orders`);
-    }
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(`DROP TABLE orders`);
+  }
 }

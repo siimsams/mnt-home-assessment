@@ -29,4 +29,4 @@ export const runMigrations = async () => {
   }
 };
 
-export default dataSource; 
+export default dataSource;
