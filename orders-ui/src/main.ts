@@ -3,12 +3,13 @@ import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { JwtInterceptor } from './app/interceptors/jwt.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(withInterceptors([JwtInterceptor]))
   ]
 }).catch((err) => console.error(err));

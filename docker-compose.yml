@@ -11,7 +11,7 @@ services:
       - DB_USER=postgres
       - DB_PASS=postgres
       - DB_NAME=orderdb
-      - CORS_ORIGIN=http://localhost:4200,http://localhost:3000
+      - CORS_ORIGIN=http://localhost:3001
       - JWT_SECRET=topsecret
       - TRACE_EXPORTER_URL=http://jaeger:4318/v1/traces
     depends_on:
